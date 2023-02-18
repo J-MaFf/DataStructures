@@ -22,24 +22,25 @@ public class BinarySearchApplications {
 	 * @param key         the key to be searched for
 	 * @return the minimum index where key appears. If key does not appear, then returns -1.
 	 */
-	public static int minIndexBinarySearch(int array[], int arrayLength, int key) { // complete this method
+	public static int minIndexBinarySearch(int array[], int arrayLength, int key) {
+		// Initialize the left and right endpoints of the search range, and the minimum index where key appears
 		int left = 0;
 		int right = arrayLength - 1;
 		int minIndex = -1;
-		// find first occurrence of key
-		while (left <= right) {
-			int mid = (left + right) / 2;
-			if (array[mid] == key) {
+
+		while (left <= right) { // While the search range is not empty
+			int mid = (left + right) / 2; // Find the middle element of the current range
+			if (array[mid] == key) { // If the middle element is the key, update the minimum index
 				minIndex = mid;
 				right = mid - 1;
-			} else if (array[mid] > key) {
+			} else if (array[mid] > key) { // If the middle element is greater than the key, search the left half
 				right = mid - 1;
-			} else {
+			} else { // If the middle element is less than the key, search the right half
 				left = mid + 1;
 			}
-		} // end while
-		return minIndex;
+		} // End while
 
+		return minIndex; // Return the minimum index where key appears (or -1 if it does not appear)
 	} // end minIndexBinarySearch
 
 	/**
@@ -51,7 +52,25 @@ public class BinarySearchApplications {
 	 * @return the maximum index where key appears. If key does not appear, then returns -1.
 	 */
 	public static int maxIndexBinarySearch(int array[], int arrayLength, int key) { // complete this method
+		// Initialize the left and right endpoints of the search range, and the maximum index where key appears
+		int left = 0;
+		int right = arrayLength - 1;
+		int maxIndex = -1;
 
+		while (left <= right) { // While the search range is not empty
+			int mid = (left + right) / 2; // Find the middle element of the current range
+			if (array[mid] == key) { // If the middle element is the key, update the maximum index
+				maxIndex = mid;
+				left  = mid + 1;
+			} else if (array[mid] > key) { // If the middle element is greater than the key, search the left half
+				right = mid - 1;
+			} else { // If the middle element is less than the key, search the right half
+				left = mid + 1;
+			}
+		} // End while
+
+		// Return the maximum index where key appears (or -1 if it does not appear)
+		return maxIndex;
 	} // end maxIndexBinarySearch
 
 	/**
