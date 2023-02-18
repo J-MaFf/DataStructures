@@ -1,4 +1,5 @@
 package pa1;
+
 import java.util.Arrays;
 
 import javax.management.AttributeNotFoundException;
@@ -32,8 +33,9 @@ public class OddEvenStack {
 	 * 
 	 * @param val the value to be pushed
 	 */
-	public void push(int val) { // complete this method
-		if (oddTos + evenTos == maxStackSize + 1) { // If the stack is already full, then don’t add anything.
+	public void push(int val) {
+		// CORRECTION: old logic was if (oddTos + evenTos == maxStackSize + 1)
+		if (size() == maxStackSize) { // If the stack is already full, then don’t add anything.
 			System.out.print("Cannot push! Stack is full.");
 		} else {
 
@@ -52,11 +54,11 @@ public class OddEvenStack {
 	 * 
 	 * @return the latest added odd number
 	 */
-	public int popOdd() throws AttributeNotFoundException { // complete this method
+	public int popOdd() throws AttributeNotFoundException {
 		if (oddTos == -1) { // if no odd numbers in the stack
-			//throw new AttributeNotFoundException();
+			// throw new AttributeNotFoundException();
 			System.out.print("Cannot pop! No odd numbers in stack.");
-			
+
 			return -1;
 		} else { // odd number found in stack
 			// return and remove the latest added odd number
@@ -71,9 +73,9 @@ public class OddEvenStack {
 	 * @return the latest added even number
 	 * @throws AttributeNotFoundException if no even numbers are in the stack
 	 */
-	public int popEven() throws AttributeNotFoundException { // complete this method
+	public int popEven() throws AttributeNotFoundException {
 		if (evenTos == maxStackSize) { // if no even numbers are in the stack
-			//throw new AttributeNotFoundException();
+			// throw new AttributeNotFoundException();
 			System.out.print("Cannot pop! No even numbers in stack.");
 			return -1;
 		} else { // even number found in the stack
@@ -84,16 +86,15 @@ public class OddEvenStack {
 
 	/**
 	 * "size" method: Returns the size of the stack by adding up the values.
+	 * 
 	 * @return the size of the stack
 	 */
-	public int size() { // complete this method
-		if (oddTos + evenTos == maxStackSize) {
-			return maxStackSize;
-		} else {
-			int oddSize = oddTos + 1;
-			int evenSize = maxStackSize - evenTos;
-			return oddSize + evenSize;
-		}
+	public int size() {
+		// CORRECTION: old logic had an if(oddTos + evenTos == maxStackSize) then return maxStackSize
+		int oddSize = oddTos + 1;
+		int evenSize = maxStackSize - evenTos;
+		return oddSize + evenSize;
+
 	}
 
 	public String toString() {
