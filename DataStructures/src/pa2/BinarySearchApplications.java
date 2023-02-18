@@ -98,15 +98,35 @@ public class BinarySearchApplications {
 	} // end countNumberOfKeys
 
 	/**
-	 * "predecessor" method:
+	 * "predecessor" method: Given a set of numbers, the predecessor of a number x is the highest number in the set that is less
+	 * than or equal to x. This method returns the predecessor where x = key and the set of numbers = array
 	 * 
-	 * @param array
-	 * @param arrayLen
-	 * @param key
-	 * @return
+	 * @param array    the set of numbers searched
+	 * @param arrayLen length of the array
+	 * @param key      the value being searched for
+	 * @return a position in the array where the predecessor of key lies.
+	 *         Needless to say that the array is sorted in ascending order.
+	 *         If the predecessor of key is not defined, return -1.
 	 */
-	public static int predecessor(int array[], int arrayLen, int key) { // complete this method
-
+	public static int predecessor(int array[], int arrayLen, int key) {
+		// Instantiate search bounds, mix, and predecessor index
+		int left = 0;
+		int right = arrayLen - 1;
+		int mid = -1;
+		int predIndex = -1;
+		while (left <= right) { // while search range is not empty
+			mid = (left + right) / 2;
+			if (key == array[mid]) { // if middle element is key, return mid index
+				return mid;
+			} else if (key > array[mid]) { // set predecessor index equal to mid (it is a good estimate) and search right half of array
+				predIndex = mid;
+				left = mid + 1;
+			} else { // search left half of array
+				right = mid - 1;
+			}
+		}
+		// If key was not found, return the predecessor index
+		return predIndex;
 	} // end predecessor
 
 	/**
