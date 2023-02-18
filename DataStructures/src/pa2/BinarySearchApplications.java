@@ -1,7 +1,7 @@
 package pa2;
 
 public class BinarySearchApplications {
-
+	// test
 	public static int minIndexBinarySearch(int array[], int arrayLength, int key) { // complete this method
 	}
 
