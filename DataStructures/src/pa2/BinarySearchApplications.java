@@ -30,7 +30,7 @@ public class BinarySearchApplications {
 
 		while (left <= right) { // While the search range is not empty
 			int mid = (left + right) / 2; // Find the middle element of the current range
-			if (array[mid] == key) { // If the middle element is the key, update the minimum index
+			if (array[mid] == key) { // If the middle element is the key, update the minimum index and search the left half for an even smaller index
 				minIndex = mid;
 				right = mid - 1;
 			} else if (array[mid] > key) { // If the middle element is greater than the key, search the left half
@@ -59,9 +59,9 @@ public class BinarySearchApplications {
 
 		while (left <= right) { // While the search range is not empty
 			int mid = (left + right) / 2; // Find the middle element of the current range
-			if (array[mid] == key) { // If the middle element is the key, update the maximum index
+			if (array[mid] == key) { // If the middle element is the key, update the maximum index and search the right half for an even larger index
 				maxIndex = mid;
-				left  = mid + 1;
+				left = mid + 1;
 			} else if (array[mid] > key) { // If the middle element is greater than the key, search the left half
 				right = mid - 1;
 			} else { // If the middle element is less than the key, search the right half
@@ -79,9 +79,21 @@ public class BinarySearchApplications {
 	 * @param array       the array to be searched
 	 * @param arrayLength the length of the array
 	 * @param key         the key to be searched for
-	 * @return 0 if key is not the in the array, else it returns the number of occurrences of key.
+	 * @return returns the number of occurrences of key, otherwise returns 0 if key is not the in the array
 	 */
-	public static int countNumberOfKeys(int array[], int arrayLength, int key) { // complete this method
+	public static int countNumberOfKeys(int array[], int arrayLength, int key) {
+		// Get min and max indices using the methods I just wrote
+		int minIndex = minIndexBinarySearch(array, arrayLength, key);
+		int maxIndex = maxIndexBinarySearch(array, arrayLength, key);
+
+		// Calculate occurrences of key
+		if (minIndex >= 0) { // check if key occurs
+			return maxIndex - minIndex + 1; // calculate and return key occurrences
+		} else { // if key does not occur
+			// returning zero instead of using the formula because -1 + -1 + 1 = -1
+			// and the method should return 0 because there are no occurrences of the key.
+			return 0;
+		}
 
 	} // end countNumberOfKeys
 
