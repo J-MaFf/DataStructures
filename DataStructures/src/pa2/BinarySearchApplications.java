@@ -15,7 +15,7 @@ public class BinarySearchApplications {
 	 */
 
 	/**
-	 * "minIndexBinarySearch" method:
+	 * "minIndexBinarySearch" method: Finds and returns the first occurrence of key
 	 * 
 	 * @param array       the array to be searched
 	 * @param arrayLength the length of the array
@@ -23,6 +23,22 @@ public class BinarySearchApplications {
 	 * @return the minimum index where key appears. If key does not appear, then returns -1.
 	 */
 	public static int minIndexBinarySearch(int array[], int arrayLength, int key) { // complete this method
+		int left = 0;
+		int right = arrayLength - 1;
+		int minIndex = -1;
+		// find first occurrence of key
+		while (left <= right) {
+			int mid = (left + right) / 2;
+			if (array[mid] == key) {
+				minIndex = mid;
+				right = mid - 1;
+			} else if (array[mid] > key) {
+				right = mid - 1;
+			} else {
+				left = mid + 1;
+			}
+		} // end while
+		return minIndex;
 
 	} // end minIndexBinarySearch
 
