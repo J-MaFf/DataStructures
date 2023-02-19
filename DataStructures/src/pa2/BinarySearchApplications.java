@@ -1,17 +1,13 @@
 package pa2;
 
 /**
- * Program: BinarySearchApplications.java
- * Author: Joey Maffiola
- * Class:
- * Date: Feb 17, 2023
+ * Program: BinarySearchApplications.java Author: Joey Maffiola Class: Date: Feb 17, 2023
  */
 public class BinarySearchApplications {
 
 	/*
-	 * Caution: Your code should have complexity O(log n), where n = arrayLength. If your code
-	 * ends up scanning the entire array (has a complexity O(n)), you will be awarded partial credit, even
-	 * if you get the correct output.
+	 * Caution: Your code should have complexity O(log n), where n = arrayLength. If your code ends up scanning the entire array (has a complexity O(n)),
+	 * you will be awarded partial credit, even if you get the correct output.
 	 */
 
 	/**
@@ -23,14 +19,16 @@ public class BinarySearchApplications {
 	 * @return the minimum index where key appears. If key does not appear, then returns -1.
 	 */
 	public static int minIndexBinarySearch(int array[], int arrayLength, int key) {
-		// Initialize the left and right endpoints of the search range, and the minimum index where key appears
+		// Initialize the left and right endpoints of the search range, and the minimum
+		// index where key appears
 		int left = 0;
 		int right = arrayLength - 1;
 		int minIndex = -1;
 
 		while (left <= right) { // While the search range is not empty
 			int mid = (left + right) / 2; // Find the middle element of the current range
-			if (array[mid] == key) { // If the middle element is the key, update the minimum index and search the left half for an even smaller index
+			if (array[mid] == key) { // If the middle element is the key, update the minimum index and search the
+										// left half for an even smaller index
 				minIndex = mid;
 				right = mid - 1;
 			} else if (array[mid] > key) { // If the middle element is greater than the key, search the left half
@@ -52,14 +50,16 @@ public class BinarySearchApplications {
 	 * @return the maximum index where key appears. If key does not appear, then returns -1.
 	 */
 	public static int maxIndexBinarySearch(int array[], int arrayLength, int key) { // complete this method
-		// Initialize the left and right endpoints of the search range, and the maximum index where key appears
+		// Initialize the left and right endpoints of the search range, and the maximum
+		// index where key appears
 		int left = 0;
 		int right = arrayLength - 1;
 		int maxIndex = -1;
 
 		while (left <= right) { // While the search range is not empty
 			int mid = (left + right) / 2; // Find the middle element of the current range
-			if (array[mid] == key) { // If the middle element is the key, update the maximum index and search the right half for an even larger index
+			if (array[mid] == key) { // If the middle element is the key, update the maximum index and search the
+										// right half for an even larger index
 				maxIndex = mid;
 				left = mid + 1;
 			} else if (array[mid] > key) { // If the middle element is greater than the key, search the left half
@@ -98,15 +98,14 @@ public class BinarySearchApplications {
 	} // end countNumberOfKeys
 
 	/**
-	 * "predecessor" method: Given a set of numbers, the predecessor of a number x is the highest number in the set that is less
-	 * than or equal to x. This method returns the predecessor where x = key and the set of numbers = array
+	 * "predecessor" method: Given a set of numbers, the predecessor of a number x is the highest number in the set that is less than or equal to x. This
+	 * method returns the predecessor where x = key and the set of numbers = array
 	 * 
 	 * @param array    the set of numbers searched
 	 * @param arrayLen length of the array
 	 * @param key      the value being searched for
-	 * @return a position in the array where the predecessor of key lies.
-	 *         Needless to say that the array is sorted in ascending order.
-	 *         If the predecessor of key is not defined, return -1.
+	 * @return a position in the array where the predecessor of key lies. Needless to say that the array is sorted in ascending order. If the predecessor
+	 *         of key is not defined, return -1.
 	 */
 	public static int predecessor(int array[], int arrayLen, int key) {
 		// Instantiate search bounds, mix, and predecessor index
@@ -118,7 +117,8 @@ public class BinarySearchApplications {
 			mid = (left + right) / 2;
 			if (key == array[mid]) { // if middle element is key, return mid index
 				return mid;
-			} else if (key > array[mid]) { // set predecessor index equal to mid (it is a good estimate) and search right half of array
+			} else if (key > array[mid]) { // set predecessor index equal to mid (it is a good estimate) and search
+											// right half of array
 				predIndex = mid;
 				left = mid + 1;
 			} else { // search left half of array
@@ -130,13 +130,42 @@ public class BinarySearchApplications {
 	} // end predecessor
 
 	/**
-	 * "findPeak" method:
+	 * "findPeak" method: an index in the array that contains the maximum. The array contains unique values. It increases until a point and then
+	 * decreases.
 	 * 
-	 * @param twoToneArray
-	 * @param arrayLen
-	 * @return
+	 * @param twoToneArray the array to be searched
+	 * @param arrayLen     the length of the array
+	 * @return the index of the peak element
 	 */
-	public static int findPeak(int twoToneArray[], int arrayLen) { // complete this method
+	public static int findPeak(int[] twoToneArray, int arrayLen) {
+		// Instantiate search bounds, mix, and predecessor index
+		int left = 0;
+		int right = arrayLen - 1;
+		int mid = -1;
+		while (left <= right) { // while search range is not empty
+			if (left == right) { // if left and right are equal, return left
+				return left;
+			} else if (right == left + 1) {
+				// return left or right, whichever contains the larger value
+				if (twoToneArray[left] > twoToneArray[right]) {
+					return left;
+				} else {
+					return right;
+				}
+			}
+			// calculate mid
+			mid = (left + right) / 2;
+			if (twoToneArray[mid] < twoToneArray[mid + 1]) { // if the middle element is less than the element to the, search the right half
+				left = mid + 1;
+			} else if (twoToneArray[mid] < twoToneArray[mid - 1]) { // if the middle element is less than the element to the left, search the left half
+				right = mid - 1;
+			} else { // if the middle element is greater than both the element to the left and the element to the right, then it is the peak
+				return mid;
+			}
 
-	} // end findPeak
-} // end class BinarySearchApplications
+		}
+		return -1; // return -1 if no peak is found
+
+	}// end findPeak
+
+}// end class BinarySearchApplications
