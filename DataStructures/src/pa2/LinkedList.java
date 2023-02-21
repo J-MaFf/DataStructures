@@ -47,11 +47,12 @@ public class LinkedList {
 		// If argNode is the last node in the linked list, then there is nothing to delete
 		if (argNode == tail) {
 			// Nothing to delete
+			System.out.println("Cannot delete after tail.");
 		} else if (argNode.next == tail) { // if the node after argNode is the last node in the linked list, then remove all references to tail
 			tail = argNode;
 			argNode = null;
 			tail.next = null;
-			// decrement size (because we just deleted a node
+			// decrement size (because we just deleted a node)
 			size--;
 		} else {
 			// Get node after argNode (the node to be deleted) and store it in placeholder node
@@ -112,8 +113,12 @@ public class LinkedList {
 		}
 		// Now that we know the list is sorted, we can remove duplicates
 		for (int i = 0; i < size - 1; i++) {
+
 			while (getNodeAt(i).value == getNodeAt(i + 1).value) { // While the next node is equal to the current node
 				deleteAfter(getNodeAt(i)); // Delete the next node
+				if (i == size - 1) { // If we are at the end of the list, then break out of the while loop
+					break;
+				}
 			}
 		}
 		return true;
@@ -124,12 +129,38 @@ public class LinkedList {
 	 * then 5, and so on.
 	 */
 	public void pushOddIndexesToTheBack() {
-
+	    ListNode placeholder = head;
+	    // Loop through all the even indexes of the list
+	    for (int i = 0; i < size; i += 2) {
+	        // Check if the next node is at an odd index
+	        if (placeholder.next != null && i + 1 < size) {
+	            insertAtEnd(placeholder.next.value); // Insert the value of the next node at the end of the list
+	            deleteAfter(placeholder); // Delete the next node
+	        }
+	        placeholder = placeholder.next; // Move the placeholder to the next node
+	    } // end for
 	} // end pushOddIndexesToTheBack
+
+
+	// test push odd indexes to the back
+	public static void main(String[] args) {
+		LinkedList list = new LinkedList();
+		// Add 11 nodes to the list
+		for (int i = 0; i < 11; i++) {
+			list.insertAtEnd(i);
+		}
+		// Print the list
+		list.printList();
+		// Push odd indexes to the back
+		list.pushOddIndexesToTheBack();
+		// Print the list
+		list.printList();
+	}
 
 	/**
 	 * "reverse" method: reverses a linked list in-place, i.e., without using any extra space (such as an array or another linked
-	 * list) other than variables.
+	 * list) other than
+	 * variables.
 	 */
 	public void reverse() {
 
