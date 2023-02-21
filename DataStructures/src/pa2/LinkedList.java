@@ -141,22 +141,6 @@ public class LinkedList {
 	    } // end for
 	} // end pushOddIndexesToTheBack
 
-
-	// test push odd indexes to the back
-	public static void main(String[] args) {
-		LinkedList list = new LinkedList();
-		// Add 11 nodes to the list
-		for (int i = 0; i < 11; i++) {
-			list.insertAtEnd(i);
-		}
-		// Print the list
-		list.printList();
-		// Push odd indexes to the back
-		list.pushOddIndexesToTheBack();
-		// Print the list
-		list.printList();
-	}
-
 	/**
 	 * "reverse" method: reverses a linked list in-place, i.e., without using any extra space (such as an array or another linked
 	 * list) other than
