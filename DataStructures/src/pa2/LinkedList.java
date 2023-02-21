@@ -129,25 +129,24 @@ public class LinkedList {
 	 * then 5, and so on.
 	 */
 	public void pushOddIndexesToTheBack() {
-	    ListNode placeholder = head;
-	    // Loop through all the even indexes of the list
-	    for (int i = 0; i < size; i += 2) {
-	        // Check if the next node is at an odd index
-	        if (placeholder.next != null && i + 1 < size) {
-	            insertAtEnd(placeholder.next.value); // Insert the value of the next node at the end of the list
-	            deleteAfter(placeholder); // Delete the next node
-	        }
-	        placeholder = placeholder.next; // Move the placeholder to the next node
-	    } // end for
+		ListNode placeholder = head;
+		// Loop through all the even indexes of the list
+		for (int i = 0; i < size; i += 2) {
+			// Check if the next node is at an odd index
+			if (placeholder.next != null && i + 1 < size) {
+				insertAtEnd(placeholder.next.value); // Insert the value of the next node at the end of the list
+				deleteAfter(placeholder); // Delete the next node
+			}
+			placeholder = placeholder.next; // Move the placeholder to the next node
+		} // end for
 	} // end pushOddIndexesToTheBack
 
 	/**
 	 * "reverse" method: reverses a linked list in-place, i.e., without using any extra space (such as an array or another linked
-	 * list) other than
-	 * variables.
+	 * list) other than variables.
 	 */
 	public void reverse() {
-
+		
 	} // end reverse
 
 	/**
