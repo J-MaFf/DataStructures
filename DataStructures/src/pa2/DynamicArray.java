@@ -21,13 +21,15 @@ public class DynamicArray {
 	}
 
 	/**
-	 * "copyArray" method: Helper function that creates an array tmp[] of size newArrayLen if arrayLen <= newArrayLen, then copies array[] to tmp[] else
+	 * "copyArray" method: Helper function that creates an array tmp[] of size newArrayLen if arrayLen <= newArrayLen, then copies
+	 * array[] to tmp[] else
 	 * copies the first newArrayLen elements of array[] into tmp[]
 	 * 
 	 * @param array       the array to be copied
 	 * @param arrayLen    the length of array
 	 * @param newArrayLen the new length of the array
-	 * @return if arrayLen <= newArrayLen, then copies array[] to tmp[] else copies the first newArrayLen elements of array[] into tmp[]
+	 * @return if arrayLen <= newArrayLen, then copies array[] to tmp[] else copies the first newArrayLen elements of array[] into
+	 *         tmp[]
 	 */
 	private int[] copyArray(int[] array, int arrayLen, int newArrayLen) {
 		int[] tmp = new int[newArrayLen];
@@ -63,6 +65,7 @@ public class DynamicArray {
 		if (index >= numElements)
 			throw new ArrayIndexOutOfBoundsException();
 		A[index] = val;
+
 	}
 
 	/**
@@ -70,14 +73,41 @@ public class DynamicArray {
 	 * 
 	 * @param val the value of the new element
 	 */
-	public void insertAtEnd(int val) { // complete this method
-
+	public void insertAtEnd(int val) {
+		// Check to see if there is room in the array
+		if (numElements == length) { // if array is full
+			// Resize array to twice its length
+			int newArrayLen = length * 2;
+			A = copyArray(A, length, newArrayLen);
+			length = newArrayLen;
+		}
+		// Add value to the end of the array
+		A[numElements++] = val;
 	}
 
 	/**
 	 * "deleteLast" method: deletes the last element of the array
 	 */
-	public void deleteLast() { // complete this method
+	public void deleteLast() {
+		// Check to see if array is empty
+		if (numElements == 0) {
+			System.out.println("Cannot delete from an empty array");
+		} else if (numElements == 1) { // check if array only has one element
+			numElements = 0;
+			int newLen = 1;
+			A = copyArray(A, length, newLen);
+			length = newLen;
+		} else {
+			numElements--;
+			// Check to see if array is only 1/4 full
+			if (4 * numElements == length) {
+				// Get new array length
+				int newLen = numElements * 2;
+				// Set array to copied array with new length
+				A = copyArray(A, length, newLen);
+				length = newLen;
+			}
+		}
 	}
 
 	/**
