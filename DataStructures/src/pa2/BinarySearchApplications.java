@@ -1,12 +1,16 @@
 package pa2;
 
 /**
- * Program: BinarySearchApplications.java Author: Joey Maffiola Class: Date: Feb 17, 2023
+ * Program: BinarySearchApplications.java
+ * Author: Joey Maffiola
+ * Class: COMPSCI 223
+ * Date: Feb 22, 2023
  */
 public class BinarySearchApplications {
 
 	/*
-	 * Caution: Your code should have complexity O(log n), where n = arrayLength. If your code ends up scanning the entire array (has a complexity O(n)),
+	 * Caution: Your code should have complexity O(log n), where n = arrayLength. If your code ends up scanning the entire array (has
+	 * a complexity O(n)),
 	 * you will be awarded partial credit, even if you get the correct output.
 	 */
 
@@ -98,13 +102,15 @@ public class BinarySearchApplications {
 	} // end countNumberOfKeys
 
 	/**
-	 * "predecessor" method: Given a set of numbers, the predecessor of a number x is the highest number in the set that is less than or equal to x. This
+	 * "predecessor" method: Given a set of numbers, the predecessor of a number x is the highest number in the set that is less than
+	 * or equal to x. This
 	 * method returns the predecessor where x = key and the set of numbers = array
 	 * 
 	 * @param array    the set of numbers searched
 	 * @param arrayLen length of the array
 	 * @param key      the value being searched for
-	 * @return a position in the array where the predecessor of key lies. Needless to say that the array is sorted in ascending order. If the predecessor
+	 * @return a position in the array where the predecessor of key lies. Needless to say that the array is sorted in ascending order.
+	 *         If the predecessor
 	 *         of key is not defined, return -1.
 	 */
 	public static int predecessor(int array[], int arrayLen, int key) {
@@ -130,7 +136,8 @@ public class BinarySearchApplications {
 	} // end predecessor
 
 	/**
-	 * "findPeak" method: an index in the array that contains the maximum. The array contains unique values. It increases until a point and then
+	 * "findPeak" method: an index in the array that contains the maximum. The array contains unique values. It increases until a
+	 * point and then
 	 * decreases.
 	 * 
 	 * @param twoToneArray the array to be searched

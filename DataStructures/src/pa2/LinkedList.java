@@ -1,7 +1,9 @@
 package pa2;
-
 /**
- * Program: LinkedList.java Author: Joey Maffiola Class: COMPSCI 223 Date: Feb 19, 2023
+ * Program: LinkedList.java
+ * Author: Joey Maffiola
+ * Class: COMPSCI 223
+ * Date: Feb 22, 2023
  */
 public class LinkedList {
 
