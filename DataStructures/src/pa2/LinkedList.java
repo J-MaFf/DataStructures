@@ -146,7 +146,29 @@ public class LinkedList {
 	 * list) other than variables.
 	 */
 	public void reverse() {
-		
+		// First, lets track our nodes:
+		ListNode prev = head;
+		ListNode curr = head.next;
+		// For every node in the list, do the following:
+		while (curr.next != null) {
+			// Store the next node
+			ListNode tmp = curr.next;
+			// Point Current's next to the previous node
+			curr.next = prev;
+			// Set previous node to the current node
+			prev = curr;
+			// Set current node to the next node
+			curr = tmp;
+		}
+		// Now, swap head and tail
+		ListNode swap = head;
+		head = tail;
+		tail = swap;
+		// Set tail.next to empty
+		tail.next = null;
+		// head.next being null breaks the program, so we need to set it to the previous node
+		head.next = prev;
+		// Every node should now be pointing to the previous node in the list, effectively reversing the list.
 	} // end reverse
 
 	/**
