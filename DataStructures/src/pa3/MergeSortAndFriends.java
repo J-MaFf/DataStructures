@@ -87,21 +87,48 @@ public class MergeSortAndFriends {
 				// Now, we need to skip any recurring elements in A[a]. We only need to do this for one array, as the if conditionals above will
 				// skip repeated elements in the other array.
 				while (a < lenA && A[a] == B[b])
-					a++;				
+					a++;
 			}
 		}
 		return commonElementsList;
 	}
 
 	/**
-	 * "kWayMerge" method:
+	 * "kWayMerge" method: This method takes the following as arguments: k sorted arrays in a jagged array lists (i.e., each
+	 * row in the jagged array is a sorted array and there are k rows), the length of each row in another
+	 * array listLengths, and the value of k. The task is to return a single merged sorted array.
 	 * 
-	 * @param lists
-	 * @param listLengths
-	 * @param k
-	 * @return
+	 * @param lists       jagged array of sorted arrays
+	 * @param listLengths length of each row in the jagged array
+	 * @param k           number of rows in the jagged array (the # of sorted lists)
+	 * @return merged array containing all elements from the jagged array in sorted order.
 	 */
 	public static int[] kWayMerge(int lists[][], int listLengths[], int k) { // complete this function
+		// Base Case:
+		if (k == 1) { // There is a single sorted array
+			return lists[0];
+		} else if (k == 2) { // there are two sorted arrays
+			return binaryMerge(lists[0], lists[1], listLengths[0], listLengths[1]);
+		}
+		// Recursive case:
+		// Create newK which stores the new number of sorted lists in the array that you are going to end up with after pairwise merging.
+		int newK = (k + 1) / 2;
+		// Create new jagged array using newK
+		int[][] mergedLists = new int[newK][];
+		// Create another array mergedListLengths of length newK, which is going to store the lengths of the pairwise merged lists.
+		int[] mergedListLengths = new int[newK];
+		//
+		for (int i = 0; i < (k / 2); i++) { // Go through half of the lists[] rows
+			mergedListLengths[i] = listLengths[2 * i] + listLengths[2 * i + 1]; // This sets the list length of the next two arrays to be merged
+			mergedLists[i] = binaryMerge(lists[2 * i], lists[2 * i + 1], listLengths[2 * i], listLengths[2 * i + 1]); // here we merge two arrays based on index 2i and index 2i + 1
+		} // end for
+		// After this loop, if k is odd then the last row in lists, i.e., lists[k-1] does not have a pair to be merged with
+		// Therefore, we would need to copy it into mergedLists[newK - 1]
+		if (k % 2 != 0) { // if k is odd
+			mergedLists[newK - 1] = lists[k - 1];
+			mergedListLengths[newK - 1] = listLengths[k - 1];
+		}
+		return kWayMerge(mergedLists, mergedListLengths, newK);
 	}
 
 	/**
