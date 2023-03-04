@@ -9,7 +9,8 @@ import java.util.Arrays;
 public class MergeSortAndFriends {
 
 	/**
-	 * "binaryMerge" method: This method takes two sorted arrays A and B and their respective lengths lenA and lenB as arguments. It merges A and B into a single sorted array C, and then returns C.
+	 * "binaryMerge" method: This method takes two sorted arrays A and B and their respective lengths lenA and lenB as arguments. It
+	 * merges A and B into a single sorted array C, and then returns C.
 	 * 
 	 * @param A    array A
 	 * @param B    array B
@@ -56,18 +57,40 @@ public class MergeSortAndFriends {
 	}
 
 	/**
-	 * "commonElements" method: This method takes two sorted arrays A and B and their respective lengths lenA and lenB as arguments. Finds the common elements between A and B (without repeated counting of the same element) and returns them in an ArrayList<Integer>. The elements in the ArrayList<Integer>
-	 * should be in sorted order.
+	 * "commonElements" method: This method takes two sorted arrays A and B and their respective lengths lenA and lenB as arguments.
+	 * Finds the common elements between A and B (without repeated counting of the same element) and returns them in an
+	 * ArrayList<Integer>. The elements in the ArrayList<Integer>
+	 * should be in sorted order. Complexity: O(lenA + lenB) or simply O(n) , linear time.
 	 * 
-	 * @param A   array A
-	 * @param B  array B
+	 * @param A    array A
+	 * @param B    array B
 	 * @param lenA length of array A
 	 * @param lenB length of array B
 	 * @return ArrayList<Integer> containing all common elements from A[] and B[] in sorted order.
 	 */
 	public static ArrayList<Integer> commonElements(int A[], int B[], int lenA, int lenB) { // complete this function
-		
-
+		// Create arrayList to store common elements
+		ArrayList<Integer> commonElementsList = new ArrayList<Integer>();
+		// Create two variables that represent the current index of the array
+		int a = 0, b = 0;
+		// Use a while loop to find common elements
+		while (a < lenA && b < lenB) { // While there are elements left in A[] or B[]
+			if (A[a] < B[b]) {
+				a++;
+			} else if (A[a] > B[b]) {
+				b++;
+			} else {
+				// Here, we have verified that A[a] == B[b], which means we have found a common element. We shall copy this element to our array
+				// list
+				commonElementsList.add(A[a]);
+				a++;
+				// Now, we need to skip any recurring elements in A[a]. We only need to do this for one array, as the if conditionals above will
+				// skip repeated elements in the other array.
+				while (a < lenA && A[a] == B[b])
+					a++;				
+			}
+		}
+		return commonElementsList;
 	}
 
 	/**
