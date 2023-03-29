@@ -1,5 +1,10 @@
 package pa4;
-
+/**
+ * Program: TestCorrectness.java
+ * Author: Joey Maffiola
+ * Class: COMPSCI 223
+ * Date: Mar 21, 2023
+ */
 import java.util.Arrays;
 import java.util.Iterator;
 import java.util.LinkedList;

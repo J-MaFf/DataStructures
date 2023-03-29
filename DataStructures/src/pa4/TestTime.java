@@ -1,5 +1,10 @@
 package pa4;
-
+/**
+ * Program: TestTime.java
+ * Author: Joey Maffiola
+ * Class: COMPSCI 223
+ * Date: Mar 21, 2023
+ */
 import java.util.Random;
 
 public class TestTime {

@@ -1,5 +1,10 @@
 package pa4;
-
+/**
+ * Program: BSTNode.java
+ * Author: Joey Maffiola
+ * Class: COMPSCI 223
+ * Date: Mar 21, 2023
+ */
 public class BSTNode {
 
 	int value;
