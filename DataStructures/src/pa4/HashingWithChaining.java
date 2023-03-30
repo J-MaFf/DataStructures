@@ -124,10 +124,10 @@ public class HashingWithChaining {
         int minSize = maxSize, total = maxSize;
         for (int i = 1; i < TABLE_SIZE; i++) {
             int size = hashTable[i].size();
-            if (size > maxSize) maxSize = size; else if (
-                size < minSize
-            ) minSize = size;
-            total += size;
+            if (size > maxSize) maxSize = size; else if (size < minSize) {
+                minSize = size;
+                total += size;
+            }
         }
         System.out.printf(
             "Max length of a chain = %d%n" +
