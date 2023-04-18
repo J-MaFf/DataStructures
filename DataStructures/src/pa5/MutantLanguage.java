@@ -48,7 +48,7 @@ public class MutantLanguage extends Graph {
             inDegree[i] = 0;
             adjList.add(new LinkedList<Edge>());
         }
-        for (int i = 0; i < numWords - 1; i++) {
+        for (int i = 0; i < numWords; i++) {
             String currentWord = words[i];
             String nextWord = words[i + 1];
             int minLength = Math.min(currentWord.length(), nextWord.length());
