@@ -1,16 +1,29 @@
 package pa5;
 
+import java.io.File;
 import java.util.Arrays;
 
 public class customTest {
 
+    static final String DIRECTED_GRAPH1_PATH = "directed1.txt";
+    static final String DIRECTED_GRAPH2_PATH = "directed2.txt";
+    static final String UNDIRECTED_GRAPH1_PATH = "undirected1.txt";
+    static final String UNDIRECTED_GRAPH2_PATH = "undirected2.txt";
+    static final String MUTANT1_PATH = "mutant1.txt";
+    static final String MUTANT2_PATH = "mutant2.txt";
+    static final String MUTANT3_PATH = "mutant3.txt";
+
     public static void main(String[] args) {
+        String currentDirectory = System.getProperty("user.dir");
+        System.out.println("Current working directory is: " + currentDirectory);
+
         testOrdered();
         System.out.println();
         testZeroSum();
         System.out.println();
         testHeavyHitters();
         System.out.println();
+        testBFS(DIRECTED_GRAPH1_PATH);
     }
 
     public static void testOrdered() {
@@ -78,5 +91,31 @@ public class customTest {
             i,
             SetsAndMaps.kHeavyHitters(arr, arr.length, i)
         );
+    }
+
+    private static void testBFS(String filePath) {
+        try {
+            File file = new File(filePath);
+            if (!file.exists()) {
+                System.out.println("File not found: " + filePath);
+                return;
+            }
+
+            BFS bfs = new BFS(filePath);
+            for (int j = 0; j < bfs.numVertices; j++) {
+                bfs.execute(j);
+                System.out.println(
+                    "Level array (from v" +
+                    j +
+                    "):   " +
+                    Arrays
+                        .toString(bfs.level)
+                        .replaceAll("" + Integer.MAX_VALUE, "infty")
+                );
+            }
+            System.out.println();
+        } catch (Exception e) {
+            // TODO: handle exception
+        }
     }
 }
