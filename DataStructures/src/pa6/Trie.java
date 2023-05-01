@@ -50,7 +50,8 @@ public class Trie {
             sub = str2.substring(i);
             v = t.locus(sub);
             if (v.depth > lcs.length()) {
-                lcs = str2.substring(i, v.depth);
+                // set lcs to the substring of str2 that starts at the index given by the loop counter and has length equaling the depth of v.
+                lcs = str2.substring(i, i + v.depth);
             }
         }
         return lcs;

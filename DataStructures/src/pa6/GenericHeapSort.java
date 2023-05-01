@@ -1,4 +1,4 @@
-
+package pa6;
 
 import java.io.FileNotFoundException;
 import java.util.ArrayList;
@@ -7,80 +7,98 @@ import java.util.PriorityQueue;
 
 public class GenericHeapSort {
 
-	public static void sort(int[] arr, int len) {
+    public static void sort(int[] arr, int len) {
+        // creates a priority queue using the PriorityQueueComparator
+        PriorityQueue<PriorityQueuePair> heap = new PriorityQueue<>(
+            new PriorityQueuePairComparator()
+        );
 
-		// creates a priority queue using the PriorityQueueComparator
-		PriorityQueue<PriorityQueuePair> heap = new PriorityQueue<>(new PriorityQueuePairComparator());
+        for (int i = 0; i < len; i++) heap.add(
+            new PriorityQueuePair(arr[i], arr[i])
+        ); // for plain heap sort, item and priority is the same;
 
-		for (int i = 0; i < len; i++)
-			heap.add(new PriorityQueuePair(arr[i], arr[i])); // for plain heap sort, item and priority is the same;
+        int i = 0;
+        while (heap.size() > 0) { // as long as the heap is not empty
+            PriorityQueuePair ele = heap.peek(); // get the topmost item
+            heap.remove(); // remove the topmost item
+            arr[i++] = ele.item; // could also use ele.priority
+        }
+    }
 
-		int i = 0;
-		while (heap.size() > 0) { // as long as the heap is not empty
-			PriorityQueuePair ele = heap.peek(); // get the topmost item
-			heap.remove(); // remove the topmost item
-			arr[i++] = ele.item; // could also use ele.priority
-		}
-	}
+    public static void sort(String[] arr, int len) {
+        // creates a priority queue using the StringComparator
+        PriorityQueue<String> heap = new PriorityQueue<>(
+            new StringComparator()
+        );
 
-	public static void sort(String[] arr, int len) {
+        for (int i = 0; i < len; i++) heap.add(arr[i]);
 
-		// creates a priority queue using the StringComparator
-		PriorityQueue<String> heap = new PriorityQueue<>(new StringComparator());
+        int i = 0;
+        while (heap.size() > 0) { // as long as the heap is not empty
+            String ele = heap.peek(); // get the topmost item
+            heap.remove(); // remove the topmost item
+            arr[i++] = ele;
+        }
+    }
 
-		for (int i = 0; i < len; i++)
-			heap.add(arr[i]);
+    private static void sortStudents() throws FileNotFoundException {
+        System.out.println("\n*** Student Heap Sort ***\n");
+        ArrayList<Student> students = IOHelper.readStudents("students.txt");
+        System.out.println("Original Order: " + students);
 
-		int i = 0;
-		while (heap.size() > 0) { // as long as the heap is not empty
-			String ele = heap.peek(); // get the topmost item
-			heap.remove(); // remove the topmost item
-			arr[i++] = ele;
-		}
-	}
+        // creates a priority queue using the StudentComparator
+        PriorityQueue<Student> heap = new PriorityQueue<>(
+            new StudentComparator()
+        );
 
-	private static void sortStudents() throws FileNotFoundException {
-		System.out.println("\n*** Student Heap Sort ***\n");
-		ArrayList<Student> students = IOHelper.readStudents("students.txt");
-		System.out.println("Original Order: " + students);
+        for (int i = 0; i < students.size(); i++) heap.add(students.get(i));
 
-		// creates a priority queue using the StudentComparator
-		PriorityQueue<Student> heap = new PriorityQueue<>(new StudentComparator());
+        ArrayList<Student> sortedStudents = new ArrayList<>();
+        while (heap.size() > 0) { // as long as the heap is not empty
+            Student ele = heap.peek(); // get the topmost item
+            heap.remove(); // remove the topmost item
+            sortedStudents.add(ele);
+        }
 
-		for (int i = 0; i < students.size(); i++)
-			heap.add(students.get(i));
+        System.out.println("After Sorting:  " + sortedStudents);
+    }
 
-		ArrayList<Student> sortedStudents = new ArrayList<>();
-		while (heap.size() > 0) { // as long as the heap is not empty
-			Student ele = heap.peek(); // get the topmost item
-			heap.remove(); // remove the topmost item
-			sortedStudents.add(ele);
-		}
+    static void stringSort() {
+        System.out.println("\n*** String Heap Sort ***\n");
+        String arr[] = {
+            "abc",
+            "def",
+            "abcd",
+            "bce",
+            "abx",
+            "acfe",
+            "bfr",
+            "xyz",
+            "de",
+            "tyu",
+            "ab",
+            "abcd",
+            "xy",
+            "zxy",
+            "abx",
+            "def",
+        };
+        System.out.println("Original array: " + Arrays.toString(arr));
+        sort(arr, arr.length);
+        System.out.println("After sorting:  " + Arrays.toString(arr));
+    }
 
-		System.out.println("After Sorting:  " + sortedStudents);
-	}
+    static void integerSort() {
+        System.out.println("*** Integer Heap Sort ***\n");
+        int[] arr = { 360, 448, 29, 447, 15, 53, 491, 261, 219, 354 };
+        System.out.println("Original array: " + Arrays.toString(arr));
+        sort(arr, arr.length);
+        System.out.println("After sorting:  " + Arrays.toString(arr));
+    }
 
-	static void stringSort() {
-		System.out.println("\n*** String Heap Sort ***\n");
-		String arr[] = { "abc", "def", "abcd", "bce", "abx", "acfe", "bfr", "xyz", "de", "tyu", "ab", "abcd", "xy",
-				"zxy", "abx", "def" };
-		System.out.println("Original array: " + Arrays.toString(arr));
-		sort(arr, arr.length);
-		System.out.println("After sorting:  " + Arrays.toString(arr));
-	}
-
-	static void integerSort() {
-		System.out.println("*** Integer Heap Sort ***\n");
-		int[] arr = {360, 448, 29, 447, 15, 53, 491, 261, 219, 354};
-		System.out.println("Original array: " + Arrays.toString(arr));
-		sort(arr, arr.length);
-		System.out.println("After sorting:  " + Arrays.toString(arr));
-	}
-
-	public static void main(String[] args) throws FileNotFoundException {
-		integerSort();
-		stringSort();
-		sortStudents();
-	}
-
+    public static void main(String[] args) throws FileNotFoundException {
+        integerSort();
+        stringSort();
+        sortStudents();
+    }
 }

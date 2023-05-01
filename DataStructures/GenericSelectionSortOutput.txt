@@ -1,0 +1,9 @@
+*** String Selection Sort ***
+
+Original Order: abc def abcd bce abx acfe bfr xyz de tyu ab abcd xy zxy abx def 
+After Sorting:  ab abc abcd abcd abx abx acfe bce bfr de def def tyu xy xyz zxy 
+
+*** Student Selection Sort ***
+
+Original Order: (B, 88) (I, 77) (K, 77) (D, 87) (E, 83) (J, 88) (F, 78) (G, 93) (H, 91) (C, 77) (A, 78) 
+After Sorting:  (C, 77) (I, 77) (K, 77) (A, 78) (F, 78) (E, 83) (D, 87) (B, 88) (J, 88) (H, 91) (G, 93) 
