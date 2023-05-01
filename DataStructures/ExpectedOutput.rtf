@@ -1,0 +1,124 @@
+{\rtf1\ansi\ansicpg1252\cocoartf1671\cocoasubrtf600
+{\fonttbl\f0\fnil\fcharset0 Monaco;}
+{\colortbl;\red255\green255\blue255;}
+{\*\expandedcolortbl;;}
+\margl1440\margr1440\vieww10800\viewh8400\viewkind0
+\deftab720
+\pard\pardeftab720\partightenfactor0
+
+\f0\fs22 \cf0 *** Test Tree Traversals ***\
+\
+Pre-order Traversal: 22 8 14 0 6 5 70 20 11 16 24 8 20 \
+In-order Traversal: 0 14 5 6 70 8 20 11 22 24 16 8 20 \
+Post-order Traversal: 0 5 70 6 14 11 20 8 24 20 8 16 22 \
+\
+*** Using Ordered Set & Map ***\
+\
+Alphabet of [a, b, r, a, c, a, d, a, b, r, a, $] is [$, a, b, c, d, r]\
+Sorted order of [a, b, r, a, c, a, d, a, b, r, a, $] is [$, a, a, a, a, a, b, b, c, d, r, r]\
+\
+*** Using Unordered Set & Map ***\
+\
+[12, -26, 1, 8, 9, -6, 4, -12, -3, 12] has a subarray whose sum is zero.\
+[1, 7, 19, -14, 1, -14, 12] has a subarray whose sum is zero.\
+[1, 7, 19, -14, 1, -14, 8, 9, -6, 4, -12, -3, 12] has a subarray whose sum is zero.\
+[-6, 4, -12, -3, 12] has no subarray whose sum is zero.\
+[-6, 4, -12, 0, -3, 12] has a subarray whose sum is zero.\
+[0, -6, 4, -12, -3, 12] has a subarray whose sum is zero.\
+[1, 8, 9, -6, 4, -12, -3] has a subarray whose sum is zero.\
+[1, 8, 9, 0] has a subarray whose sum is zero.\
+\
+Array is: [5, 3, 4, 5, 1, 3, 5, 3, 9, 4, 9, 2, 3, 8, 3, 0, 9, 3, 9]\
+2-heavy hitters are: []\
+3-heavy hitters are: []\
+4-heavy hitters are: [3]\
+5-heavy hitters are: [3, 9]\
+6-heavy hitters are: [3, 9]\
+7-heavy hitters are: [5, 3, 9]\
+8-heavy hitters are: [5, 3, 9]\
+9-heavy hitters are: [5, 3, 9]\
+\
+*** Test BFS on Directed Graph 1 ***\
+\
+Level array (from v0):   [0, 1, 2, 1, 1, 2, 2]\
+Level array (from v1):   [1, 0, 1, 1, 2, 3, 2]\
+Level array (from v2):   [2, 1, 0, 1, 3, 3, 2]\
+Level array (from v3):   [1, 1, 1, 0, 2, 2, 1]\
+Level array (from v4):   [1, 2, 3, 2, 0, 1, 2]\
+Level array (from v5):   [2, 3, 3, 2, 1, 0, 1]\
+Level array (from v6):   [2, 2, 2, 1, 2, 1, 0]\
+\
+*** Test BFS on Directed Graph 2 ***\
+\
+Level array (from v0):   [0, 1, 2, 1, infty, 2, infty]\
+Level array (from v1):   [1, 0, 1, 1, infty, 2, infty]\
+Level array (from v2):   [2, 1, 0, 1, infty, 2, infty]\
+Level array (from v3):   [1, 1, 1, 0, infty, 1, infty]\
+Level array (from v4):   [1, 2, 3, 2, 0, 1, 1]\
+Level array (from v5):   [2, 2, 2, 1, infty, 0, infty]\
+Level array (from v6):   [2, 3, 4, 3, 1, 2, 0]\
+\
+*** Test Component Counter on Undirected Graph 1 ***\
+\
+Number of components is 3\
+\
+*** Test Component Counter on Undirected Graph 2 ***\
+\
+Number of components is 2\
+\
+*** Test Transitive Closure on Directed Graph 1 ***\
+\
+[true, true, true, true, true, true, true]\
+[true, true, true, true, true, true, true]\
+[true, true, true, true, true, true, true]\
+[true, true, true, true, true, true, true]\
+[true, true, true, true, true, true, true]\
+[true, true, true, true, true, true, true]\
+[true, true, true, true, true, true, true]\
+\
+*** Test Transitive Closure on Directed Graph 2 ***\
+\
+[true, true, true, true, false, true, false]\
+[true, true, true, true, false, true, false]\
+[true, true, true, true, false, true, false]\
+[true, true, true, true, false, true, false]\
+[true, true, true, true, true, true, true]\
+[true, true, true, true, false, true, false]\
+[true, true, true, true, true, true, true]\
+\
+*** Test Transitive Closure on Undirected Graph 1 ***\
+\
+[true, false, false, false, true, true, true, false]\
+[false, true, true, true, false, false, false, false]\
+[false, true, true, true, false, false, false, false]\
+[false, true, true, true, false, false, false, false]\
+[true, false, false, false, true, true, true, false]\
+[true, false, false, false, true, true, true, false]\
+[true, false, false, false, true, true, true, false]\
+[false, false, false, false, false, false, false, true]\
+\
+*** Test Transitive Closure on Undirected Graph 2 ***\
+\
+[true, true, true, true, true, true, true, false, false]\
+[true, true, true, true, true, true, true, false, false]\
+[true, true, true, true, true, true, true, false, false]\
+[true, true, true, true, true, true, true, false, false]\
+[true, true, true, true, true, true, true, false, false]\
+[true, true, true, true, true, true, true, false, false]\
+[true, true, true, true, true, true, true, false, false]\
+[false, false, false, false, false, false, false, true, true]\
+[false, false, false, false, false, false, false, true, true]\
+\
+*** Test Mutant Language 1 ***\
+\
+Alphabet order: [b, a, c, e, d]\
+\
+*** Test Mutant Language 2 ***\
+\
+Unfortunately, this language has circular dependency.\
+\
+*** Test Mutant Language 3 ***\
+\
+Alphabet order: [b, d, a, f, c, g, e]\
+\
+}
